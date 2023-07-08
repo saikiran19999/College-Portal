@@ -7,10 +7,13 @@ pipeline {
             }
         }
         stage('Parallel Stage') {
+            when {
+                branch 'master'
+            }
             failFast true
             parallel {
                 stage('Branch A') {
-                    agent any
+                   agent any
                     steps {
                         echo "On Branch A"
                     }
